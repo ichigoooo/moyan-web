@@ -1,3 +1,5 @@
+import { useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
 import { Check, Star } from 'lucide-react';
 
 const plans = [
@@ -15,27 +17,47 @@ const plans = [
     highlighted: false
   },
   {
-    name: '私塾会员',
+    name: '私塾会员 (月付)',
+    price: '¥19',
+    period: '每月',
+    features: [
+      '无限畅聊次数',
+      '深度解读与幕后故事',
+      '优先体验新功能',
+      '智能笔记与回顾'
+    ],
+    cta: '开启月度阅读',
+    highlighted: false
+  },
+  {
+    name: '私塾会员 (年付)',
     price: '¥168',
     period: '每年',
     features: [
       '无限畅聊次数',
       '深度解读与幕后故事',
-      '亲子成长周报',
       '优先体验新功能',
-      '专属学习顾问',
-      '智能笔记与回顾'
+      '智能笔记与回顾',
+      '年度专属徽章'
     ],
-    cta: '开启私塾之旅',
+    cta: '开启年度私塾',
     highlighted: true
   }
 ];
 
 export default function Pricing() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
   return (
-    <section className="py-24 px-6 bg-[#f5f1e8]">
+    <section className="py-24 px-6 bg-[#f5f1e8] overflow-hidden" ref={ref}>
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-20">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-20"
+        >
           <h2 className="text-4xl md:text-5xl font-serif text-[#2c2416] mb-4 tracking-wide">
             择一而入
           </h2>
@@ -43,20 +65,22 @@ export default function Pricing() {
           <p className="text-[#5a4a3a] mt-6 text-lg">
             高端教育的解药，文化格调的传承
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {plans.map((plan, index) => (
-            <div
+            <motion.div
               key={index}
-              className={`relative bg-white p-10 transition-all duration-300 border-2 ${
-                plan.highlighted
-                  ? 'border-[#c8553d] shadow-2xl transform md:scale-105'
-                  : 'border-[#d4c5b0] hover:border-[#c8553d] hover:shadow-xl'
-              }`}
+              initial={{ opacity: 0, y: 50 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: index * 0.2 }}
+              className={`relative bg-white p-10 transition-all duration-300 border-2 ${plan.highlighted
+                ? 'border-[#c8553d] shadow-2xl transform md:scale-105 rounded-xl z-20'
+                : 'border-[#d4c5b0] hover:border-[#c8553d] hover:shadow-xl rounded-xl z-10'
+                }`}
             >
               {plan.highlighted && (
-                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-[#c8553d] text-[#f5f1e8] px-6 py-1 text-sm flex items-center gap-2">
+                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-[#c8553d] text-[#f5f1e8] px-6 py-1 text-sm flex items-center gap-2 rounded-full shadow-lg">
                   <Star className="w-4 h-4 fill-current" />
                   <span>推荐</span>
                 </div>
@@ -82,15 +106,15 @@ export default function Pricing() {
               </ul>
 
               <button
-                className={`w-full py-4 text-lg font-light tracking-wider transition-all duration-300 ${
-                  plan.highlighted
-                    ? 'bg-[#c8553d] text-[#f5f1e8] hover:bg-[#a84632] shadow-lg'
-                    : 'bg-[#f5f1e8] text-[#2c2416] border border-[#d4c5b0] hover:border-[#c8553d] hover:text-[#c8553d]'
-                }`}
+                className={`w-full py-4 text-lg font-light tracking-wider transition-all duration-300 rounded-lg overflow-hidden relative group ${plan.highlighted
+                  ? 'bg-[#c8553d] text-[#f5f1e8] shadow-lg hover:shadow-xl'
+                  : 'bg-[#f5f1e8] text-[#2c2416] border border-[#d4c5b0] hover:border-[#c8553d] hover:text-[#c8553d]'
+                  }`}
               >
-                {plan.cta}
+                <span className="relative z-10">{plan.cta}</span>
+                {plan.highlighted && <div className="absolute inset-0 bg-[#a84632] transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300" />}
               </button>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

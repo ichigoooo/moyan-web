@@ -27,7 +27,7 @@ export default function Footer() {
             <div className="space-y-3">
               <div className="flex items-center gap-3 text-[#a89985]">
                 <Mail className="w-5 h-5 text-[#c8553d]" strokeWidth={1.5} />
-                <span>contact@moyan.app</span>
+                <span>lotus@iamagamer.fun</span>
               </div>
               <div className="flex items-center gap-3 text-[#a89985]">
                 <Smartphone className="w-5 h-5 text-[#c8553d]" strokeWidth={1.5} />
