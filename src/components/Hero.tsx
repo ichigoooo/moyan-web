@@ -54,7 +54,7 @@ export default function Hero() {
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#e6dfcc]/50 border border-[#d4c5b0] mb-8"
           >
             <Sparkles className="w-4 h-4 text-[#c8553d]" />
-            <span className="text-[#8b7355] text-sm tracking-widest font-medium">AI 驱动的数字书房</span>
+            <span className="text-[#8b7355] text-sm tracking-widest font-medium">墨言APP：AI 驱动的数字书房</span>
           </motion.div>
 
           <motion.h1

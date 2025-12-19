@@ -65,10 +65,10 @@ export default function Features() {
           className="text-center mb-20"
         >
           <h2 className="text-4xl md:text-5xl font-serif text-[#2c2416] mb-6 tracking-wide">
-            不做电子教辅，做<span className="text-[#c8553d]">数字书房</span>
+            墨言APP：不做电子教辅，做<span className="text-[#c8553d]">数字书房</span>
           </h2>
           <p className="text-[#8b7355] text-lg max-w-2xl mx-auto">
-            以“名篇古籍原文的深入阅读”为轴心，避免碎片化，回归经典本身。
+            墨言APP以“名篇古籍原文的深入阅读”为轴心，为您提供沉浸式阅读体验，避免碎片化，回归经典本身。
           </p>
           <div className="w-24 h-0.5 bg-[#c8553d]/50 mx-auto mt-8" />
         </motion.div>

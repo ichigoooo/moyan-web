@@ -8,7 +8,7 @@ export default function Footer() {
           <div>
             <h3 className="text-2xl font-serif text-[#f5f1e8] mb-4">墨言</h3>
             <p className="text-[#a89985] leading-relaxed">
-              让经典不再是死去的文字，而是鲜活的灵魂对话。
+              墨言APP致力于让经典不再是死去的文字，而是鲜活的灵魂对话，提供优质的数字阅读服务。
             </p>
           </div>
 
